@@ -13,7 +13,7 @@
 
 					<h2>Créer une unniversité</h2>
 					<label>Libelle unniversité</label>
-					<input type="text" name="libelle" class="form-control @error('nom') is-invalid @enderror" >
+					<input type="text" name="libelle" class="form-control @error('nom') is-invalid @enderror" required>
                     @error('nom')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror

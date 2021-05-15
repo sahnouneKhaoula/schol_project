@@ -16,7 +16,7 @@ class CreateUnniversitesTable extends Migration
         Schema::create('unniversites', function (Blueprint $table) {
             $table->id();
             $table ->string('libelle');
-            $table ->string('description');
+            $table ->string('description')->nullable($value = true);
             $table->timestamps();
 
         });

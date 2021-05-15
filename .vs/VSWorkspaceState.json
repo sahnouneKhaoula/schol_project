@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app\\Console"
+    "\\database",
+    "\\database\\migrations",
+    "\\resources\\views",
+    "\\resources\\views\\etudiants",
+    "\\resources\\views\\unniversites",
+    "\\storage\\app"
   ],
+  "SelectedNode": "\\database\\migrations\\2021_04_30_223647_create_classes_table.php",
   "PreviewInSolutionExplorer": false
 }

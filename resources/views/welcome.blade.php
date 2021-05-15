@@ -22,14 +22,16 @@
     <ul class="navbar-nav mr-auto">
       
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('unniversites.index') }}">Unniversites<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ route('unniversites.index') }}">Unniversites</a>
       </li>
       
      <h1>< <li class="nav-item">
-        <a class="nav-link" href="{{ route('classes.index')}}">Classes<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ route('classes.index')}}">Classes</a>
       </li><h1>
       
-      
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('etudiants.index)}}">Etudiant</a>
+      </li>
     </ul>
    
        

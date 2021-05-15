@@ -45,10 +45,17 @@
             <label for="">Photo de profil</label>
 			<input type="file"  name="photo" class="form-control" required>
 			<label for="telephone">Telephone etudiant</label>
-			<input type="text" name="telephone" class="form-control" required>
-			<label for="email">Email etudiant</label>
-			<input type="text" name="email" class="form-control" required>
-			
+			<input type="text" name="telephone" class="form-control @error('telephone') is-invalid @enderror " required value="{{old('telephone')}}">
+            @error('telephone')
+			<small class="text-danger">{{ $message }}</small>
+			@enderror
+            <br>
+            <label for="email">Email etudiant</label>
+			<input type="text" name="email" class="form-control @error('email') is-invalid @enderror " required >
+			@error('email')
+			<small class="text-danger">{{ $message }}</small>
+			@enderror 
+			<br>
             <label for="">Universite</label>
 			<select name="unniversite" id="mySelect" class="form-control" >
 				@foreach($unniversites as $unniversite)

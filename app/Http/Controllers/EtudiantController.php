@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
+use App\Models\classe;
 use App\Models\Unniversite;
 
 class EtudiantController extends Controller
@@ -36,28 +37,68 @@ class EtudiantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
+
+       $photo= $request->file('photo');
+
+        $nomimage = 'etudiant'.time().uniqid().'.'.$photo->getClientOriginalExtension();
+
+        $path = $photo->storeAS('public/imagesetudiants',$nomimage);
+
+        $request->validate([
+            'email' => 'required|unique:etudiants',
+            'telephone' => 'required|unique:etudiants'
+            
+        ]);
+       
+        
+        $etudiant = new Etudiant();
+         
+        $etudiant->prenom = $request->prenom; 
+        $etudiant->nom = $request->nom; 
+        $etudiant->telephone = $request->telephone;
+        
+        $etudiant->email = $request->email; 
+        $etudiant->photo = $nomimage; 
+        $etudiant->classe_id =$request->classe;
+
+       $etudiant->save();
+         return redirect()->route('etudiants.index','Etudiant enregistrée');
+
+        
+    }
+
+    /*public function store(Request $request)
+    {
+     //return redirect()->route('etudiants.index')->with('message',$request->classe);
      $request->validate([
             'email' => 'required|unique:etudiants',
             'telephone'  => 'required'
         ]);
-
-       $image = $request->file('photo');
+         
+      $image = $request->file('photo');
        $nomimage = 'etudiant'.time().uniqid().'.'.$image->getClientOriginalExtension();
-       $path= $image->storeAS('imagesetudiants',$nomimage);
+       $path= $image->storeAS('public/imagesetudiants',$nomimage);
+        
        $etudiant = new Etudiant();
        $etudiant->nom = $request->nom;
+      
        $etudiant->prenom = $request->prenom;
        $etudiant->telephone = $request->telephone;
+          
        $etudiant->email = $request->email;
+    
        $etudiant->photo = $nomimage;
        $etudiant->classe_id = $request->classe;
-        
         $etudiant->save();
-
-        return redirect()->route('etudiants.index')->with('message','Etudiant enregistrée');
-    }
+         return redirect()->route('etudiants.index')->with('message','Etudiant enregistrée');
+     
+       
+   
+   
+       
+    }*/
 
     /**
      * Display the specified resource.

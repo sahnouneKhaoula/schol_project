@@ -13,6 +13,6 @@ class Etudiant extends Model
     }
      public function imagePrincipale()
     {
-    	return asset('imagesetudiants/'.$this->photo);
+    	return asset('storage/imagesetudiants/'.$this->photo);
     }
 }
